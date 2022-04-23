@@ -20,30 +20,28 @@ function Header() {
                 <Link to='/'>GoalSetter</Link>
             </div>
             <ul>
-                {user ?
-                    (
+                {user ? (
+                    <li>
+                        <button className='btn' onClick={onLogout}>
+                            <FaSignOutAlt /> Logout
+                        </button>
+                    </li>
+                ) : (
+                    <>
                         <li>
-                            <button className="btn" onClick={onLogout}>
-                                <FaSignOutAlt /> Logout
-                            </button>
+                            <Link to='/login'>
+                                <FaSignInAlt /> Login
+                            </Link>
                         </li>
-                    ) : (
-                        <>
-                            <li>
-                                <Link to='/login'>
-                                    <FaSignInAlt /> Login
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to='/Register'>
-                                    <FaUser /> Register
-                                </Link>
-                            </li>
-                        </>
-                    )
-                }
+                        <li>
+                            <Link to='/register'>
+                                <FaUser /> Register
+                            </Link>
+                        </li>
+                    </>
+                )}
             </ul>
-        </header >
+        </header>
     )
 }
 

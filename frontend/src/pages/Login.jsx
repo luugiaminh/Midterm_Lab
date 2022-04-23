@@ -3,7 +3,6 @@ import { FaSignInAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
@@ -23,7 +22,7 @@ function Login() {
     )
 
     useEffect(() => {
-        if (!isError) {
+        if (isError) {
             toast.error(message)
         }
 
@@ -57,7 +56,7 @@ function Login() {
         return <Spinner />
     }
 
-    return <>
+    return (<>
         <section className="heading">
             <h1>
                 <FaSignInAlt /> Login
@@ -79,7 +78,7 @@ function Login() {
                 </div>
                 <div className="form-group">
                     <input
-                        type="text"
+                        type="password"
                         className="form-control"
                         id='password'
                         name='password'
@@ -97,6 +96,7 @@ function Login() {
             </form>
         </section>
     </>
+    )
 }
 
 export default Login
